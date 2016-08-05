@@ -2,7 +2,6 @@ package AirlineDelaySinglePass;
  
 import java.io.IOException;
  
-import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -13,6 +12,16 @@ import org.apache.hadoop.mapred.Reporter;
  
 public class AirlineDelayByStartTimeMapper extends MapReduceBase implements
   Mapper<LongWritable, Text, Text, IntWritable> {
+	
+public static boolean isNumeric(String str) {  
+	  try {  
+	    double d = Double.parseDouble(str);  
+	  }  
+	  catch(NumberFormatException nfe) {  
+	    return false;  
+	  }  
+	  return true;  
+}
  
  public void map(LongWritable key, Text value,
    OutputCollector<Text, IntWritable> output, Reporter reporter)
@@ -27,8 +36,8 @@ public class AirlineDelayByStartTimeMapper extends MapReduceBase implements
   // Get the origin which is the 17 field in the input line
   String origin = pieces[16];
  
-  if (StringUtils.isNumeric(pieces[4])
-    && StringUtils.isNumeric(pieces[5])) {
+  if (isNumeric(pieces[4])
+    && isNumeric(pieces[5])) {
  
    // 5 DepTime actual departure time (local, hhmm)
    // 6 CRSDepTime scheduled departure time (local, hhmm)
