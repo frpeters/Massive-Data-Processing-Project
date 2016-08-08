@@ -39,7 +39,7 @@ public class AirlineDelayByStartTime {
  
   // Specify the number of reducers tasks to run at any instant on a
   // machine, defaults to one
-  conf.setNumReduceTasks(4);
+  conf.setNumReduceTasks(1);
  
   // Trigger the mapreduce program
   JobClient.runJob(conf);
