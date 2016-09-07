@@ -1,4 +1,4 @@
-package AirlineDelaySinglePass;
+package uchile;
  
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public static boolean isNumeric(String str) {
 }
  
  public void map(LongWritable key, Text value,
-   OutputCollector<Text, IntWritable> output, Reporter reporter)
+   OutputCollector<Text, DoubleWritable> output, Reporter reporter)
    throws IOException {
  
   // Split the input line based on comma
@@ -54,7 +54,7 @@ public static boolean isNumeric(String str) {
  
   // Send the Origin and the delayed status to the reducer for aggregation
   // ex., (ORD, 1)
-  output.collect(new Text(origin), new IntWritable(delayed));
+  output.collect(new Text(origin), new DoubleWritable(delayed));
  
  }
 }

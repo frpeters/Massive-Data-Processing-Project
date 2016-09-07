@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="airline" basedir="." default="dist">
+<project name="PMDproject" basedir="." default="dist">
    <property name="name" value="airline" />
    <property name="src" value="src" />
    <property name="version" value="" />
@@ -18,15 +18,15 @@
    </target>
 	
    <target name="dist" depends="clean,prepare">
-   	<!--<javac destdir="bin" srcdir="src" includes="org/mdp/**" source="1.6" target="1.6" debug="true" debuglevel="lines,source">
+   	<javac destdir="bin" srcdir="src" includes="uchile/**" source="1.6" target="1.6" debug="true" debuglevel="lines,source">
          <classpath refid="classpath" />
-      </javac>-->
+      </javac>
       <!--
     <copy file="src/com/ontologycentral/ldspider/tld/tld.dat" tofile="bin/com/ontologycentral/ldspider/tld/tld.dat"> </copy>
     -->
       <jar jarfile="${dist}/${name}.jar" basedir="bin">
          <manifest>
-            <attribute name="Main-Class" value="AirlineDelaySinglePass.AirlineDelayByStartTime" />
+            <attribute name="Main-Class" value="AirlineDelayByStartTime" />
          </manifest>
          <!-- put common dependancies lower -->
          <zipfileset src="lib/commons-cli-1.1.jar" />
